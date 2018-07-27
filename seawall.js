@@ -46,7 +46,7 @@ var seawall = SAGE2_WebGLApp.extend({
 		console.log("initialize ctm");
 		// CAMERA
 		this.camera = new THREE.PerspectiveCamera(25, this.width / this.height, 1, 10000);
-		this.camera.position.set(185, 40, 170);
+		this.camera.position.set(0, 40, 170);
 
 		this.orbitControls = new THREE.OrbitControls(this.camera, this.element);
 		this.orbitControls.maxPolarAngle = Math.PI / 2;
@@ -54,7 +54,7 @@ var seawall = SAGE2_WebGLApp.extend({
 		this.orbitControls.maxDistance = 500;
 		this.orbitControls.autoRotate  = true;
 		this.orbitControls.zoomSpeed   = 0.1;
-		this.orbitControls.autoRotateSpeed = 2.0; // 30 seconds per round when fps is 60
+		this.orbitControls.autoRotateSpeed = 0.0; // 30 seconds per round when fps is 60
 
 		// SCENE
 		this.scene = new THREE.Scene();
@@ -149,13 +149,16 @@ var seawall = SAGE2_WebGLApp.extend({
 		}
 
 		this.ready = true;
-		this.canvas.parentNode.appendChild(this.canvasElement);
-		this.canvas.parentNode.style.position = "relative";
-		this.canvas.style.position = "absolute";
-		this.canvasElement.style.position = "absolute";
-		this.canvasElement.style = this.canvas.style.cssText;
-		this.canvasElement.style.top = '0px';
-		this.canvas.style.zIndex = 0;
+		
+		
+		document.body.appendChild(this.canvasElement);
+		//this.canvas.parentNode.style.position = "relative";
+		//this.canvas.style.position = "absolute";
+		//this.canvasElement.style.position = "absolute";
+		//this.canvasElement.style = this.canvas.style.cssText;
+		//this.canvasElement.style.top = '0px';
+		//this.canvasElement.style.visibility = "hidden";
+		//this.canvas.style.zIndex = 0;
 
 		// draw!
 		this.resize(date);
